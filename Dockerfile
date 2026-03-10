@@ -1,5 +1,5 @@
 # Imagen base fija — nunca usar :latest en producción
-FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
+FROM pytorch/pytorch:2.8.0-cuda12.6-cudnn8-runtime
 
 WORKDIR /app
 
