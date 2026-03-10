@@ -31,10 +31,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Pre-requisitos para compilación de audio C++ en Python
 RUN pip install --no-cache-dir Cython packaging
 
-# NeMo en tag de release fijo — nunca usar @main en producción
-RUN pip install --no-cache-dir \
-    "nemo_toolkit[tts] @ git+https://github.com/NVIDIA/NeMo.git@r2.2.0" \
-    kaldialign
+# Qwen3-TTS y generador de dependencias extra si se requieren
+RUN pip install --no-cache-dir qwen-tts
 
 COPY handler.py .
 
