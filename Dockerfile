@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-devel
+FROM pytorch/pytorch:latest
 
 WORKDIR /app
 
@@ -12,9 +12,6 @@ RUN apt-get update && apt-get install -y git libsndfile1 ffmpeg && rm -rf /var/l
 # Instalar dependencias base y optimizaciones
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Instalar torchaudio compatible con pytorch 2.1.0 y CUDA 11.8 antes que NeMo
-RUN pip install torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118
 
 # Instalar NeMo toolkit específicamente con soporte TTS y kaldialign
 RUN pip install "git+https://github.com/NVIDIA/NeMo.git@main#egg=nemo_toolkit[tts]" kaldialign --upgrade --break-system-packages
