@@ -1,0 +1,17 @@
+FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-devel
+
+WORKDIR /app
+
+# Instalar dependencias del sistema requeridas por NeMo y libsndfile para audios
+RUN apt-get update && apt-get install -y git libsndfile1 ffmpeg && rm -rf /var/lib/apt/lists/*
+
+# Instalar dependencias base y optimizaciones
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Instalar NeMo toolkit específicamente con soporte TTS y kaldialign
+RUN pip install nemo_toolkit[tts]@main kaldialign --upgrade --break-system-packages
+
+COPY handler.py .
+
+CMD [ "python", "-u", "handler.py" ]

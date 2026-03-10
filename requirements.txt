@@ -1,0 +1,4 @@
+runpod
+scipy
+soundfile
+numpy
