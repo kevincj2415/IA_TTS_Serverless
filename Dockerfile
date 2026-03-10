@@ -14,7 +14,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Instalar NeMo toolkit específicamente con soporte TTS y kaldialign
-RUN pip install nemo_toolkit[tts]@main kaldialign --upgrade --break-system-packages
+RUN pip install "git+https://github.com/NVIDIA/NeMo.git@main#egg=nemo_toolkit[tts]" kaldialign --upgrade --break-system-packages
 
 COPY handler.py .
 
