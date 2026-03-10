@@ -9,8 +9,8 @@ import numpy as np
 
 from qwen_tts import Qwen3TTSModel
 
-# Default to Qwen3-TTS 1.7B
-model_name = os.environ.get("MODEL_NAME", "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice")
+# Default to Qwen3-TTS VoiceDesign
+model_name = os.environ.get("MODEL_NAME", "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign")
 print(f"Cargando {model_name}...")
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -41,8 +41,8 @@ def handler(job):
 
     text = job_input.get("text")
     language = job_input.get("language", "English")
-    speaker = job_input.get("speaker", "Vivian")
-    instruct = job_input.get("instruct", "")
+    # For VoiceDesign, 'instruct' represents the natural language description of the voice
+    instruct = job_input.get("instruct", "A person speaking clearly.")
 
     if not text:
         return {"error": "El parámetro 'text' es obligatorio."}
@@ -57,10 +57,9 @@ def handler(job):
 
     try:
         with torch.no_grad():
-            wav_list, sr = model.generate_custom_voice(
+            wav_list, sr = model.generate_voice_design(
                 text=text,
                 language=lang_formatted,
-                speaker=speaker,
                 instruct=instruct,
             )
 
