@@ -1,0 +1,60 @@
+2026-03-10T01:50:30.455724414Z ==========
+2026-03-10T01:50:30.455729724Z == CUDA ==
+2026-03-10T01:50:30.455743344Z ==========
+2026-03-10T01:50:30.466987518Z CUDA Version 11.8.0
+2026-03-10T01:50:30.467002718Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2026-03-10T01:50:30.467017138Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2026-03-10T01:50:30.467024678Z By pulling and using the container, you accept the terms and conditions of this license:
+2026-03-10T01:50:30.467030938Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2026-03-10T01:50:30.467043898Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2026-03-10T01:50:35.228728233Z font_manager.py     :1639 2026-03-10 01:50:35,228 generated new fontManager
+2026-03-10T01:50:35.606982464Z /opt/conda/lib/python3.10/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'Could not load this library: /opt/conda/lib/python3.10/site-packages/torchvision/image.so'If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+2026-03-10T01:50:35.607005234Z   warn(
+2026-03-10T01:50:36.530954417Z utils.py            :148  2026-03-10 01:50:36,530 Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+2026-03-10T01:50:36.530977207Z utils.py            :151  2026-03-10 01:50:36,530 Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2026-03-10T01:50:36.530982297Z utils.py            :164  2026-03-10 01:50:36,530 NumExpr defaulting to 16 threads.
+2026-03-10T01:50:37.290580503Z config.py           :193  2026-03-10 01:50:37,290 OneLogger: Setting error_handling_strategy to DISABLE_QUIETLY_AND_REPORT_METRIC_ERROR for rank (rank=0) with OneLogger disabled. To override: explicitly set error_handling_strategy parameter.
+2026-03-10T01:50:37.301076910Z export_config_manager.py:108  2026-03-10 01:50:37,300 Final configuration contains 0 exporter(s)
+2026-03-10T01:50:37.301244302Z training_telemetry_provider.py:309  2026-03-10 01:50:37,301 No exporters were provided. This means that no telemetry data will be collected.
+2026-03-10T01:50:38.999062656Z Traceback (most recent call last):
+2026-03-10T01:50:38.999171157Z   File "/opt/conda/lib/python3.10/site-packages/torch/_ops.py", line 1442, in load_library
+2026-03-10T01:50:38.999177297Z     ctypes.CDLL(path)
+2026-03-10T01:50:38.999181297Z   File "/opt/conda/lib/python3.10/ctypes/__init__.py", line 374, in __init__
+2026-03-10T01:50:38.999184677Z     self._handle = _dlopen(self._name, mode)
+2026-03-10T01:50:38.999187417Z OSError: /opt/conda/lib/python3.10/site-packages/torchaudio/lib/libtorchaudio.so: undefined symbol: _ZNK5torch8autograd4Node4nameEv
+2026-03-10T01:50:38.999193517Z The above exception was the direct cause of the following exception:
+2026-03-10T01:50:38.999198607Z Traceback (most recent call last):
+2026-03-10T01:50:38.999200947Z   File "/app/handler.py", line 9, in <module>
+2026-03-10T01:50:38.999204387Z     from nemo.collections.tts.models import MagpieTTSModel
+2026-03-10T01:50:38.999208917Z   File "/opt/conda/lib/python3.10/site-packages/nemo/collections/tts/__init__.py", line 15, in <module>
+2026-03-10T01:50:38.999212337Z     from nemo.collections.tts import data, losses, models, modules
+2026-03-10T01:50:38.999214617Z   File "/opt/conda/lib/python3.10/site-packages/nemo/collections/tts/models/__init__.py", line 16, in <module>
+2026-03-10T01:50:38.999217627Z     from nemo.collections.tts.models.audio_codec import AudioCodecModel
+2026-03-10T01:50:38.999220627Z   File "/opt/conda/lib/python3.10/site-packages/nemo/collections/tts/models/audio_codec.py", line 28, in <module>
+2026-03-10T01:50:38.999249687Z     from nemo.collections.audio.parts.utils.transforms import Resample, resample
+2026-03-10T01:50:38.999252317Z   File "/opt/conda/lib/python3.10/site-packages/nemo/collections/audio/__init__.py", line 15, in <module>
+2026-03-10T01:50:38.999255037Z     from nemo.collections.audio import data, losses, metrics, models, modules
+2026-03-10T01:50:38.999257437Z   File "/opt/conda/lib/python3.10/site-packages/nemo/collections/audio/metrics/__init__.py", line 15, in <module>
+2026-03-10T01:50:38.999260157Z     from nemo.collections.audio.metrics.audio import AudioMetricWrapper
+2026-03-10T01:50:38.999262537Z   File "/opt/conda/lib/python3.10/site-packages/nemo/collections/audio/metrics/audio.py", line 24, in <module>
+2026-03-10T01:50:38.999264927Z     from nemo.collections.audio.metrics.squim import SquimMOSMetric, SquimObjectiveMetric
+2026-03-10T01:50:38.999267587Z   File "/opt/conda/lib/python3.10/site-packages/nemo/collections/audio/metrics/squim.py", line 22, in <module>
+2026-03-10T01:50:38.999270167Z     import torchaudio
+2026-03-10T01:50:38.999272507Z   File "/opt/conda/lib/python3.10/site-packages/torchaudio/__init__.py", line 1, in <module>
+2026-03-10T01:50:38.999274847Z     from . import (  # noqa: F401
+2026-03-10T01:50:38.999279298Z   File "/opt/conda/lib/python3.10/site-packages/torchaudio/_extension/__init__.py", line 45, in <module>
+2026-03-10T01:50:38.999281978Z     _load_lib("libtorchaudio")
+2026-03-10T01:50:38.999285118Z   File "/opt/conda/lib/python3.10/site-packages/torchaudio/_extension/utils.py", line 64, in _load_lib
+2026-03-10T01:50:38.999287767Z     torch.ops.load_library(path)
+2026-03-10T01:50:38.999290178Z   File "/opt/conda/lib/python3.10/site-packages/torch/_ops.py", line 1444, in load_library
+2026-03-10T01:50:38.999292598Z     raise OSError(f"Could not load this library: {path}") from e
+2026-03-10T01:50:38.999294998Z OSError: Could not load this library: /opt/conda/lib/python3.10/site-packages/torchaudio/lib/libtorchaudio.so
+2026-03-10T01:50:47.695096459Z ==========
+2026-03-10T01:50:47.695109929Z == CUDA ==
+2026-03-10T01:50:47.695164329Z ==========
+2026-03-10T01:50:47.698658865Z CUDA Version 11.8.0
+2026-03-10T01:50:47.699873864Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2026-03-10T01:50:47.701050973Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2026-03-10T01:50:47.701058533Z By pulling and using the container, you accept the terms and conditions of this license:
+2026-03-10T01:50:47.701064373Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2026-03-10T01:50:47.701074933Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
