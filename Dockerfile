@@ -1,5 +1,5 @@
 # Imagen base fija — nunca usar :latest en producción
-FROM pytorch/pytorch:2.8.0-cuda12.6-cudnn9-devel
+FROM pytorch/pytorch:2.10.0-cuda12.6-cudnn9-devel
 
 WORKDIR /app
 
@@ -15,11 +15,12 @@ RUN apt-get update && apt-get install -y \
     ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
-# Forzar torch + torchvision compatibles antes de instalar NeMo
-# Esto evita el RuntimeError: operator torchvision::nms does not exist
+# Forzar torch, torchvision y torchaudio compatibles antes de instalar NeMo
+# Esto evita el RuntimeError: operator torchvision::nms does not exist y errores de ABI
 RUN pip install --no-cache-dir \
     torch==2.3.0 \
     torchvision==0.18.0 \
+    torchaudio==2.3.0 \
     --index-url https://download.pytorch.org/whl/cu121
 
 # Dependencias base del proyecto
