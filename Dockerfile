@@ -5,6 +5,7 @@ WORKDIR /app
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
+ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 # Dependencias del sistema requeridas por NeMo y audio
 RUN apt-get update && apt-get install -y \
