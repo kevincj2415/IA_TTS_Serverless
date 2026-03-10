@@ -2,6 +2,10 @@ FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-devel
 
 WORKDIR /app
 
+# Evitar prompts interactivos durante la instalación (ej. tzdata)
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
 # Instalar dependencias del sistema requeridas por NeMo y libsndfile para audios
 RUN apt-get update && apt-get install -y git libsndfile1 ffmpeg && rm -rf /var/lib/apt/lists/*
 
